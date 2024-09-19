@@ -1,0 +1,90 @@
+{
+  "version": "0.0.1",
+  "description": "The Official Unstoppable Domains Resolution Snap",
+  "proposedName": "Unstoppable",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unstoppabledomains/unstoppable-resolution-snap"
+  },
+  "source": {
+    "shasum": "p14Kc1ZsWOplXdWhMuT6W+m+yo74C0P4Fm19DIWy75U=",
+    "location": {
+      "npm": {
+        "filePath": "dist/bundle.js",
+        "iconPath": "images/icon.svg",
+        "packageName": "unstoppable-snap",
+        "registry": "https://registry.npmjs.org/"
+      }
+    }
+  },
+  "initialPermissions": {
+    "snap_notify": {},
+    "endowment:name-lookup": {
+      "chains": [
+        "eip155:1",
+        "eip155:137",
+        "eip155:43114",
+        "eip155:56",
+        "eip155:250"
+      ],
+      "matchers": {
+        "tlds": [
+          "crypto",
+          "nft",
+          "bitcoin",
+          "blockchain",
+          "unstoppable",
+          "dao",
+          "888",
+          "wallet",
+          "x",
+          "klever",
+          "hi",
+          "kresus",
+          "polygon",
+          "anime",
+          "manga",
+          "binanceus",
+          "go",
+          "altimist",
+          "pudgy",
+          "austin",
+          "bitget",
+          "pog",
+          "clay",
+          "witg",
+          "metropolis",
+          "wrkx",
+          "secret",
+          "raiin",
+          "stepn",
+          "kryptic",
+          "ubu",
+          "tball",
+          "farms",
+          "dfz",
+          "zil",
+          "com",
+          "ca",
+          "eth"
+        ]
+      }
+    },
+    "endowment:rpc": {
+      "dapps": true,
+      "snaps": true
+    },
+    "endowment:network-access": {},
+    "endowment:cronjob": {
+      "jobs": [
+        {
+          "expression": "0 0 * * 0",
+          "request": {
+            "method": "execute"
+          }
+        }
+      ]
+    }
+  },
+  "manifestVersion": "0.1"
+}
