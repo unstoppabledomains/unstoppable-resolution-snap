@@ -1,7 +1,7 @@
 import { OnNameLookupHandler, OnCronjobHandler, NotificationType } from '@metamask/snaps-sdk';
 
 const UNSTOPPABLE_API_KEY = process.env.UNSTOPPABLE_API_KEY ?? '';
-const TLD_COUNT = 37;
+const TLD_COUNT = 41;
 
 async function getAndUpdateTlds() {
   const resp = await fetch(
@@ -11,21 +11,18 @@ async function getAndUpdateTlds() {
 
   let data = await resp.json();
   if (data.tlds.length !== TLD_COUNT) {
-    console.log('sending notification');
     return await snap.request({
       method: "snap_notify",
       params: {
         type: NotificationType.InApp,
-        message: 'time to update this snap to get the latest tlds',
+        message: 'For our latest TLDs please update your Unstoppable Snap',
       }
     });
   } else {
-    console.log('tlds are up to date');
   }
 }
 
 export const onCronjob: OnCronjobHandler = async ({ request }) => {
-  console.log(request);
   switch (request.method) {
     case "execute":
       await getAndUpdateTlds();
@@ -38,7 +35,6 @@ export const onCronjob: OnCronjobHandler = async ({ request }) => {
 export const onNameLookup: OnNameLookupHandler = async (request) => {
   const { chainId, domain } = request
   if (domain) {
-    console.log('resolving', domain);
     const response = await fetch(
       `https://api.unstoppabledomains.com/resolve/domains/${domain}`,
       {
@@ -48,7 +44,7 @@ export const onNameLookup: OnNameLookupHandler = async (request) => {
         },
       }
     )
-    
+
     const data = await response.json()
     let resolvedAddress
     switch (chainId) {
@@ -67,18 +63,72 @@ export const onNameLookup: OnNameLookupHandler = async (request) => {
       case "eip155:250":
         resolvedAddress = data.records["crypto.FTM.address"]
         break;
+      case "eip155:8453":
+        resolvedAddress = data.records["token.EVM.BASE.ETH.address"]
+        break;
+      case "eip155:100009":
+        resolvedAddress = data.records["crypto.VET.address"]
+        break;
+      case "eip155:42220":
+        resolvedAddress = data.records["crypto.CELO.address"]
+        break;
+      case "eip155:66":
+        resolvedAddress = data.records["crypto.OKT.address"]
+        break;
+      case "eip155:14":
+        resolvedAddress = data.records["crypto.FLR.address"]
+        break;
+      case "eip155:7332":
+        resolvedAddress = data.records["crypto.ZEN.address"]
+        break;
+      case "eip155:4689":
+        resolvedAddress = data.records["crypto.IOTX.address"]
+        break;
+      case "eip155:888":
+        resolvedAddress = data.records["crypto.WAN.address"]
+        break;
+      case "eip155:196":
+        resolvedAddress = data.records["crypto.OKB.address"]
+        break;
+      case "eip155:122":
+        resolvedAddress = data.records["crypto.FUSE.version.FUSE.address"]
+        break;
+      case "eip155:106":
+        resolvedAddress = data.records["crypto.VLX.address"]
+        break;
+      case "eip155:11":
+        resolvedAddress = data.records["crypto.META.address"]
+        break;
+      case "eip155:1030":
+        resolvedAddress = data.records["crypto.CFX.address"]
+        break;
+      case "eip155:30":
+        resolvedAddress = data.records["crypto.RSK.address"]
+        break;
+      case "eip155:20":
+        resolvedAddress = data.records["crypto.ELA.version.ESC.address"]
+        break;
+      case "eip155:8":
+        resolvedAddress = data.records["crypto.UBQ.address"]
+        break;
+      case "eip155:4488":
+        resolvedAddress = data.records["crypto.HYDRA.address"]
+        break;
+      case "eip155:192837465":
+        resolvedAddress = data.records["crypto.GTH.address"]
+        break;
       default:
         console.log(`ChainId ${chainId} not supported`);
-        break;
+        break
     }
-    if (resolvedAddress) {
-      return {
-        resolvedAddresses: [
-          { resolvedAddress, protocol: "Unstoppable Domains", domainName: domain },
-        ],
-      }
+        if (resolvedAddress) {
+          return {
+            resolvedAddresses: [
+              { resolvedAddress, protocol: "Unstoppable Domains", domainName: domain },
+            ],
+          }
+        }
     }
-  }
 
-  return null
-}
+    return null
+  }

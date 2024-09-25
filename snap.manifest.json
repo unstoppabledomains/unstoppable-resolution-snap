@@ -7,12 +7,12 @@
     "url": "https://github.com/unstoppabledomains/unstoppable-resolution-snap"
   },
   "source": {
-    "shasum": "p14Kc1ZsWOplXdWhMuT6W+m+yo74C0P4Fm19DIWy75U=",
+    "shasum": "WJiCbVoUosUd+dsV94zRnzRoZm5hxvgCsHqkmV+9ArM=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
         "iconPath": "images/icon.svg",
-        "packageName": "unstoppable-snap",
+        "packageName": "@unstoppabledomains/unstoppable-resolution-snap",
         "registry": "https://registry.npmjs.org/"
       }
     }
@@ -25,7 +25,25 @@
         "eip155:137",
         "eip155:43114",
         "eip155:56",
-        "eip155:250"
+        "eip155:250",
+        "eip155:8453",
+        "eip155:100009",
+        "eip155:42220",
+        "eip155:66",
+        "eip155:14",
+        "eip155:7332",
+        "eip155:4689",
+        "eip155:888",
+        "eip155:196",
+        "eip155:122",
+        "eip155:106",
+        "eip155:11",
+        "eip155:1030",
+        "eip155:30",
+        "eip155:20",
+        "eip155:8",
+        "eip155:4488",
+        "eip155:192837465"
       ],
       "matchers": {
         "tlds": [
@@ -63,6 +81,10 @@
           "tball",
           "farms",
           "dfz",
+          "lfg",
+          "dream",
+          "smobler",
+          "benji",
           "zil",
           "com",
           "ca",
