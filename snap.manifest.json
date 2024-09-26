@@ -7,7 +7,7 @@
     "url": "https://github.com/unstoppabledomains/unstoppable-resolution-snap"
   },
   "source": {
-    "shasum": "WJiCbVoUosUd+dsV94zRnzRoZm5hxvgCsHqkmV+9ArM=",
+    "shasum": "kMCu9iDtqs85h/K2iSi6RDC21J6t3dwOqdJV8NMgGPU=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
@@ -18,7 +18,7 @@
     }
   },
   "initialPermissions": {
-    "snap_notify": {},
+    "snap_manageState": {},
     "endowment:name-lookup": {
       "chains": [
         "eip155:1",
@@ -44,57 +44,7 @@
         "eip155:8",
         "eip155:4488",
         "eip155:192837465"
-      ],
-      "matchers": {
-        "tlds": [
-          "crypto",
-          "nft",
-          "bitcoin",
-          "blockchain",
-          "unstoppable",
-          "dao",
-          "888",
-          "wallet",
-          "x",
-          "klever",
-          "hi",
-          "kresus",
-          "polygon",
-          "anime",
-          "manga",
-          "binanceus",
-          "go",
-          "altimist",
-          "pudgy",
-          "austin",
-          "bitget",
-          "pog",
-          "clay",
-          "witg",
-          "metropolis",
-          "wrkx",
-          "secret",
-          "raiin",
-          "stepn",
-          "kryptic",
-          "ubu",
-          "tball",
-          "farms",
-          "dfz",
-          "lfg",
-          "dream",
-          "smobler",
-          "benji",
-          "zil",
-          "com",
-          "ca",
-          "eth"
-        ]
-      }
-    },
-    "endowment:rpc": {
-      "dapps": true,
-      "snaps": true
+      ]
     },
     "endowment:network-access": {},
     "endowment:cronjob": {

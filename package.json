@@ -23,8 +23,7 @@
   },
   "dependencies": {
     "@metamask/snaps-sdk": "^6.1.1",
-    "buffer": "^6.0.3",
-    "dotenv": "^16.4.5"
+    "buffer": "^6.0.3"
   },
   "devDependencies": {
     "@metamask/auto-changelog": "^3.4.4",
