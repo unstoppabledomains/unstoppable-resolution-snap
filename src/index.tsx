@@ -49,7 +49,6 @@ async function getTldFromState() {
 
 // saves TLDs to browser/local state
 async function setTldData(tldData) {
-  console.log('setting tld data', tldData);
   return await snap.request({
     method: "snap_manageState",
     params: {
@@ -101,7 +100,6 @@ export const onNameLookup: OnNameLookupHandler = async (request) => {
   }
   if (await checkDomainTld(domain)) {
     const data = await debouncedCallResolveApi(domain);
-    console.log('data on the outside', data);
     let resolvedAddress
     switch (chainId) {
       case "eip155:1":
