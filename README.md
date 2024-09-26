@@ -10,8 +10,6 @@ Install the dependencies
 yarn  install
 ```
 
-Add a .env with your Unstoppable API Key
-
 Build and start the local development server
 
 ```bash

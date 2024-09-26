@@ -1,4 +1,4 @@
-import { OnNameLookupHandler, OnCronjobHandler } from '@metamask/snaps-sdk';
+import { OnNameLookupHandler } from '@metamask/snaps-sdk';
 
 // grabs supported TLDs from Unstoppable API
 async function getAndUpdateTlds() {
@@ -11,23 +11,12 @@ async function getAndUpdateTlds() {
   await setTldData(data.tlds);
 }
 
-// every week, grab the latest TLDs
-export const onCronjob: OnCronjobHandler = async ({ request }) => {
-  switch (request.method) {
-    case "execute":
-      await getAndUpdateTlds();
-      return
-    default:
-      throw new Error("Method not found.");
-  }
-}
-
 // checks to see if a domain has an Unstoppable TLD
 async function checkDomainTld(domain) {
-  const stateTlds = await getTldFromState();
+  const localData = await getTldFromState();
   const parts = domain.toLowerCase().split('.')
   const lastPart = parts[parts.length - 1];
-  const result = stateTlds.some(tld => lastPart === tld.toLowerCase());
+  const result = localData.tlds.some(tld => lastPart === tld.toLowerCase());
   return result;
 
 }
@@ -39,11 +28,11 @@ async function getTldFromState() {
       operation: "get",
       encrypted: false,
     },
-  })
-  if (localData && Array.isArray(localData.tlds)) {
-    return localData.tlds;
+  });
+  if (localData && Array.isArray(localData.tlds) && localData.date) {
+    return { tlds: localData.tlds, date: localData.date };
   } else {
-    return [];
+    return { tlds: [], date: null };
   }
 }
 
@@ -53,12 +42,20 @@ async function setTldData(tldData) {
     method: "snap_manageState",
     params: {
       operation: "update",
-      newState: { tlds: tldData },
+      newState: { tlds: tldData, date: new Date().toISOString()},
       encrypted: false,
     },
   });
 }
-// debounce function
+// to determine the update, check if the date is older than 7 days
+function isDateOlderThanSevenDays(storedDate) {
+  if (!storedDate) return true;
+  const dateToCheck = new Date(storedDate);
+  const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+  return dateToCheck < sevenDaysAgo; 
+}
+
+// debounce function to limit the number of API calls
 function debounce(fn, delay) {
   let timeoutId;
 
@@ -73,8 +70,7 @@ function debounce(fn, delay) {
   };
 }
 
-
-// wraps Resolution API call in a debounce to prevent excess pinging
+// wraps Resolution API call in a debounce function
 const debouncedCallResolveApi = debounce(async (domain) => {
   const data = await callResolveApi(domain);
   return data;
@@ -93,9 +89,9 @@ async function callResolveApi(domain) {
 // Metamask Entry Point, Resolves Unstoppable Domains to the corresponding address depending on the network
 export const onNameLookup: OnNameLookupHandler = async (request) => {
   const { chainId, domain } = request
-  let tlds = await getTldFromState();
-  // if local storage is empty, get TLD data
-  if (tlds.length === 0) {
+  let localData = await getTldFromState();
+  // if TLDs are not in local storage or the date is older than 7 days, fetch and update TLDs
+  if (localData.tlds.length === 0 || (localData.date && isDateOlderThanSevenDays(localData.date))) {
     await getAndUpdateTlds();
   }
   if (await checkDomainTld(domain)) {
