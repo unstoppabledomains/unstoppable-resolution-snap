@@ -1,12 +1,12 @@
 {
   "name": "@unstoppabledomains/unstoppable-resolution-snap",
-  "version": "0.0.1",
-  "description": "The Official Unstoppable Domains Resolution Snap.",
+  "version": "1.0.0",
+  "description": "Resolve Unstoppable Domains in Metamask",
   "repository": {
     "type": "git",
     "url": "https://github.com/unstoppabledomains/unstoppable-resolution-snap"
   },
-  "license": "(MIT-0 OR Apache-2.0)",
+  "license": "ISC",
   "main": "./dist/bundle.js",
   "files": [
     "dist/",

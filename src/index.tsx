@@ -47,12 +47,12 @@ async function setTldData(tldData) {
     },
   });
 }
-// to determine the update, check if the date is older than 7 days
-function isDateOlderThanSevenDays(storedDate) {
+// to determine the update, check if the date is older than 3 days
+function isDateOlderThanThreeDays(storedDate) {
   if (!storedDate) return true;
   const dateToCheck = new Date(storedDate);
-  const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-  return dateToCheck < sevenDaysAgo; 
+  const threeDaysAgo = new Date(Date.now() - 3 * 24 * 60 * 60 * 1000);
+  return dateToCheck < threeDaysAgo; 
 }
 
 // debounce function to limit the number of API calls
@@ -90,8 +90,8 @@ async function callResolveApi(domain) {
 export const onNameLookup: OnNameLookupHandler = async (request) => {
   const { chainId, domain } = request
   let localData = await getTldFromState();
-  // if TLDs are not in local storage or the date is older than 7 days, fetch and update TLDs
-  if (localData.tlds.length === 0 || (localData.date && isDateOlderThanSevenDays(localData.date))) {
+  // if TLDs are not in local storage or the date is older than 3 days, fetch and update TLDs
+  if (localData.tlds.length === 0 || (localData.date && isDateOlderThanThreeDays(localData.date))) {
     await getAndUpdateTlds();
   }
   if (await checkDomainTld(domain)) {
@@ -102,7 +102,7 @@ export const onNameLookup: OnNameLookupHandler = async (request) => {
         resolvedAddress = data.records['token.EVM.ETH.address'] ?? data.records['token.EVM.ETH.ETH.address'] ?? data.records['crypto.ETH.address'];
         break;
       case "eip155:137":
-        resolvedAddress = data.records['token.EVM.MATIC.address'] ?? data.records['token.EVM.MATIC.MATIC.address'] ?? data.records['crypto.MATIC.version.MATIC.address'];
+        resolvedAddress = data.records['token.EVM.MATIC.address'] ?? data.records['token.EVM.MATIC.POL.address'] ?? data.records['crypto.MATIC.version.MATIC.address'];
         break;
       case "eip155:43114":
         resolvedAddress = data.records['token.EVM.AVAX.address'] ?? data.records['token.EVM.AVAX.AVAX.address'] ?? data.records['crypto.AVAX.address'];
