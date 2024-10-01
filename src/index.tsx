@@ -114,7 +114,7 @@ export const onNameLookup: OnNameLookupHandler = async (request) => {
         resolvedAddress = data.records['token.EVM.FTM.address'] ?? data.records['token.EVM.FTM.FTM.address'] ?? data.records['crypto.FTM.version.OPERA.address'];
         break;
       case "eip155:8453":
-        resolvedAddress = data.records['token.EVM.ETH.address'] ?? data.records['token.EVM.ETH.ETH.address'] ?? data.records['crypto.ETH.address'];
+        resolvedAddress = data.records['token.EVM.BASE.address'] ?? data.records['token.EVM.BASE.ETH.address'];
         break;
       case "eip155:100009":
         resolvedAddress = data.records['token.EVM.VET.address'] ?? data.records['token.EVM.VET.VET.address'] ?? data.records['crypto.VET.address'];

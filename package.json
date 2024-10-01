@@ -1,6 +1,6 @@
 {
   "name": "@unstoppabledomains/unstoppable-resolution-snap",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Resolve Unstoppable Domains in Metamask",
   "repository": {
     "type": "git",
