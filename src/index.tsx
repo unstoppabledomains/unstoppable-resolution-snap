@@ -148,7 +148,6 @@ export const onNameLookup: OnNameLookupHandler = async (request: AddressLookupAr
   }
 
   const data = await debouncedCallResolveApi(domain);
-  console.log(data);
   let resolvedAddress: string | undefined;
 
   switch (chainId) {
