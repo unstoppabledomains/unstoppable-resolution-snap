@@ -2074,11 +2074,11 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 22.13.1
-  resolution: "@types/node@npm:22.13.1"
+  version: 22.13.4
+  resolution: "@types/node@npm:22.13.4"
   dependencies:
     undici-types: ~6.20.0
-  checksum: a0759e4bedc3fe892c3ddef5fa9cb5251f9c5b24defc1a389438ea3b5b727c481c1a9bc94bae4ecc7426c89ad293cd66633d163da1ab14d74d358cbec9e1ce31
+  checksum: 39ecbd84fc2c6268c57f0479bc095cd304d2e97fee0b4ed7e6a77508aaadb28dc21be0ec91bf866ab2be822bf6c9749945795dbd6ba60e0851b50a967fd784b5
   languageName: node
   linkType: hard
 
@@ -2935,12 +2935,12 @@ __metadata:
   linkType: hard
 
 "call-bind-apply-helpers@npm:^1.0.0, call-bind-apply-helpers@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "call-bind-apply-helpers@npm:1.0.1"
+  version: 1.0.2
+  resolution: "call-bind-apply-helpers@npm:1.0.2"
   dependencies:
     es-errors: ^1.3.0
     function-bind: ^1.1.2
-  checksum: 3c55343261bb387c58a4762d15ad9d42053659a62681ec5eb50690c6b52a4a666302a01d557133ce6533e8bd04530ee3b209f23dd06c9577a1925556f8fcccdf
+  checksum: b2863d74fcf2a6948221f65d95b91b4b2d90cfe8927650b506141e669f7d5de65cea191bf788838bc40d13846b7886c5bc5c84ab96c3adbcf88ad69a72fcdc6b
   languageName: node
   linkType: hard
 
@@ -3501,9 +3501,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.5.73":
-  version: 1.5.97
-  resolution: "electron-to-chromium@npm:1.5.97"
-  checksum: e41173d90ab1c6b8d4767d7c2533f41545c8a37fbf288197137189773d0b630e00b7c54d0361c2f3357833dd41bfa79a6328cb739b34066abb708eae3c90c0fc
+  version: 1.5.99
+  resolution: "electron-to-chromium@npm:1.5.99"
+  checksum: 6aa72202aab975407e0b319d79544835c9cbcfaa78cf21f2edb854dc1cc8d634bb234fd477bec71f2968753bbee2f3b9b1b3ca482b2b9c031a2df926edf96b2e
   languageName: node
   linkType: hard
 
@@ -5721,7 +5721,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"schema-utils@npm:^3.1.1, schema-utils@npm:^3.2.0":
+"schema-utils@npm:^3.1.1":
   version: 3.3.0
   resolution: "schema-utils@npm:3.3.0"
   dependencies:
@@ -6241,7 +6241,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"terser-webpack-plugin@npm:^5.3.10, terser-webpack-plugin@npm:^5.3.9":
+"terser-webpack-plugin@npm:^5.3.11, terser-webpack-plugin@npm:^5.3.9":
   version: 5.3.11
   resolution: "terser-webpack-plugin@npm:5.3.11"
   dependencies:
@@ -6264,8 +6264,8 @@ __metadata:
   linkType: hard
 
 "terser@npm:^5.31.1":
-  version: 5.38.2
-  resolution: "terser@npm:5.38.2"
+  version: 5.39.0
+  resolution: "terser@npm:5.39.0"
   dependencies:
     "@jridgewell/source-map": ^0.3.3
     acorn: ^8.8.2
@@ -6273,7 +6273,7 @@ __metadata:
     source-map-support: ~0.5.20
   bin:
     terser: bin/terser
-  checksum: 5e4eeff75533252509dd62b665185e3a37ceb6e04d5302e3a416860b5efbe51dbf1d6c5d5086e8bbc239ff695a38d69f5cddfb32424fd6267578e02aeed45457
+  checksum: e39c302aed7a70273c8b03032c37c68c8d9d3b432a7b6abe89caf9d087f7dd94d743c01ee5ba1431a095ad347c4a680b60d258f298a097cf512346d6041eb661
   languageName: node
   linkType: hard
 
@@ -6617,8 +6617,8 @@ __metadata:
   linkType: hard
 
 "webpack@npm:^5.88.0":
-  version: 5.97.1
-  resolution: "webpack@npm:5.97.1"
+  version: 5.98.0
+  resolution: "webpack@npm:5.98.0"
   dependencies:
     "@types/eslint-scope": ^3.7.7
     "@types/estree": ^1.0.6
@@ -6638,9 +6638,9 @@ __metadata:
     loader-runner: ^4.2.0
     mime-types: ^2.1.27
     neo-async: ^2.6.2
-    schema-utils: ^3.2.0
+    schema-utils: ^4.3.0
     tapable: ^2.1.1
-    terser-webpack-plugin: ^5.3.10
+    terser-webpack-plugin: ^5.3.11
     watchpack: ^2.4.1
     webpack-sources: ^3.2.3
   peerDependenciesMeta:
@@ -6648,7 +6648,7 @@ __metadata:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: 649065e2258b495ae41a4088be804b4be2ec07d280aa514ebef43da79caf96fa973d26a08826c3902b5676a098d9b37c589f16be7b4da17b68b08b6c76441196
+  checksum: 0de353c694bc4d5af810e4f4d4fd356271b21b2253583a9f618416b5fcbaf8db5a5487c12cc1379778d2a07d56382293334153af6e2ce59ded59488f08015fd1
   languageName: node
   linkType: hard
 

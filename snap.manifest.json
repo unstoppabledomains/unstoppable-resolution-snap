@@ -1,5 +1,5 @@
 {
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Resolve Unstoppable Domains in Metamask",
   "proposedName": "Unstoppable",
   "repository": {
@@ -7,7 +7,7 @@
     "url": "https://github.com/unstoppabledomains/unstoppable-resolution-snap"
   },
   "source": {
-    "shasum": "dqGeJgEtag1apCt9sTWhcF2+T9etd92qr0TO4SyHzZ4=",
+    "shasum": "3qHMK4zDsNfjybqH+ec4YUyxfO+ROMD3RQhOztuR+b8=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
