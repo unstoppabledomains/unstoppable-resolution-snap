@@ -29,15 +29,21 @@
     "clean": "rimraf dist",
     "prepublishOnly": "mm-snap manifest",
     "serve": "mm-snap serve",
-    "start": "mm-snap watch"
+    "start": "mm-snap watch",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "devDependencies": {
     "@metamask/auto-changelog": "^5.0.2",
     "@metamask/snaps-cli": "^8.1.1",
     "@metamask/snaps-controllers": "^14.2.0",
+    "@metamask/snaps-jest": "^9.1.0",
     "@metamask/snaps-sdk": "^9.1.0",
+    "@types/jest": "^30.0.0",
+    "jest": "^30.0.5",
     "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
+    "ts-jest": "^29.4.0",
     "typescript": "^5.8.3"
   },
   "packageManager": "yarn@3.2.1",
