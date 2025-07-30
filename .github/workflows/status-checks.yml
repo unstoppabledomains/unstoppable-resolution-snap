@@ -1,0 +1,90 @@
+name: Status Checks
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Run tests
+        run: yarn test --coverage --watchAll=false
+
+  build:
+    name: Build Verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Build snap
+        run: yarn build:snap
+
+      - name: Build types
+        run: yarn build:types
+
+      - name: Build preinstalled snap
+        run: yarn build-preinstalled-snap
+
+      - name: Verify build artifacts
+        run: |
+          # Check that the bundle was created
+          test -f dist/bundle.js
+          # Check that the manifest was updated
+          test -f snap.manifest.json
+          # Check that the preinstalled snap was created
+          test -f dist/preinstalled-snap.json
+          echo "✅ All build artifacts created successfully"
+
+  security:
+    name: Security Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Run security audit
+        run: yarn npm audit --recursive
