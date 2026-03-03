@@ -93,7 +93,9 @@ jobs:
         # updates and do not affect the production snap.
         run: |
           yarn npm audit --recursive --severity critical 2>&1 | tee /tmp/audit.log || true
-          if [ -s /tmp/audit.log ] && ! grep -q "Via:.*@metamask" /tmp/audit.log; then
+          # Filter out yarn's "No audit suggestions" line — it's not a vulnerability
+          grep -v "No audit suggestions" /tmp/audit.log > /tmp/audit-filtered.log || true
+          if [ -s /tmp/audit-filtered.log ] && ! grep -q "Via:.*@metamask" /tmp/audit-filtered.log; then
             echo "::error::Security audit found critical vulnerabilities not from @metamask transitive deps"
             exit 1
           fi
